@@ -1,0 +1,35 @@
+# From now determinate the year, the day and the time (hour and minutes) after 250 million of seconds passed
+
+seconds <- 250e+6
+
+predictTime = function(t){
+  minutes = 250000000/60
+  hours  = minutes%/%60
+  minutes = round(minutes%%60)
+  days = hours%/%24
+  hours = hours%%24
+  years = days%/%365
+  days = (days%%365)-2
+  actualYear = 2018 + years
+  sprintf("%i:%i of the day %i of the year %i", hours, minutes, days, actualYear)
+}
+
+predictTime(seconds)
+
+# Create a function that that solve an equation of first grade
+
+firstEq = function(a, b){
+  # Ax+B=0
+  -b/a
+}
+
+firstEq(2,4)
+
+# Give an expression to calculate 3e-π rounded to 3 decimal places
+
+round(3*exp(1)-pi,3)     
+
+# Give the complex number module (2 + 3i) ^ 2 / (5 + 8i) rounded to 3 decimal places
+
+rounderImaginary = Mod((2+3i) ^ 2 / (5 + 8i))
+round(rounderImaginary,3)
