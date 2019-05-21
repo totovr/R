@@ -1,0 +1,26 @@
+---
+title: "Text Documentation"
+author: "Antonio Vega"
+date: "5/21/2019"
+output: pdf_document
+---
+
+# Title 1
+
+## Title 2
+
+### Title 3
+
+#### Title 4
+
+##### Title 5
+
+This is a plain text in `R`
+
+If we need an intro is required to type double intro
+
+- If we need a to write in italics is required one asterisk, *This is italics*, also we can use one low bar _This is italics_
+- If we need a to write in bold is required double asterisk, **This is bold**, , also we can use double low bar __This is bold__
+
+The super index goes with double **hat**, note^2^, Hello my name is Antonio^Vega^
+

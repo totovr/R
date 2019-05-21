@@ -1,0 +1,78 @@
+---
+title: "Introduction to chunks"
+author: "Antonio Vega"
+date: "5/20/2019"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+# Our own chunk
+
+## Parameters of the chunks
+
+Code |  Meaning                                  
+--------------------|--------------------
+`echo` | If we match it to `TRUE`, which is the default value, we will be saying that we want the source code of the chunk to be displayed. On the other hand, equal to `FALSE`, it will not be shown
+`eval` | If we equate it to `TRUE`, which is the default value, we will be saying that we want the code to be evaluated. On the other hand, equal to `FALSE`, it will not be evaluated
+`message` | It allows us to indicate if we want to show the messages that R produces when executing code. Matched to `TRUE` are displayed, matched to` FALSE` no
+`warning` | It allows us to indicate if we want to display the warning messages that produce some functions when executed. Matched to `TRUE` are displayed, matched to` FALSE` no
+
+### results parameters
+
+Meaning |  Code  |  Result                                
+--------------------|--------------------|--------------------
+`results` | `markup` | Default value. It shows us the results in the final document line by line, headed by `##`
+`results` | `hide` | The result is not shown in the final document
+`results` | `asis` | We return the results line by line literally in the final document and the program with which the final document is opened is interpreted as text and properly formatted
+`results` | `hold` | Show all results at the end of the code block
+
+We will calculate $\sqrt{2} - e^{-2}$:
+
+```{R myFirstChunk, echo = TRUE, eval = TRUE}
+sqrt(2) - exp(-2)
+```
+
+<!-- This will throw a message in this case about the library required -->
+<!-- comment=NA will not show the ## -->
+
+```{r magic, message=TRUE, comment=NA}
+library(magic)
+magic(6)
+```
+
+```{r , echo = TRUE, message=TRUE}
+library(car)
+head(cars,3)
+```
+
+When we want to make the square of two:
+
+- In \LaTeX: $\sqrt{2}$
+- In `R` doing `r sqrt(2)`
+- Combining: $\sqrt{2}=$ `r sqrt(2)`
+
+The number $\pi$ start with `r pi`
+
+## Example using chunk in a paragraph 
+
+To introduce a part of code within a paragraph and to execute it when the document is compiled showing the final result, it must be done using ```r "\u0060r ...\u0060" ```
+
+<div class = "example">
+**Example**
+
+The square root of 64 is ```r "\u0060r sqrt(64)\u0060" ``` or, which is the same thing, $\sqrt{64}=$ ```r "\u0060r sqrt(64)\u0060" ```
+
+The fifth root of 32 is `r 32^(1/5)` o, which is the same thing, $\sqrt[5]{64}=$ `r 32^(1/5)`.
+</div>
+
+## Another example
+
+```{r check, results="hide", echo=FALSE}
+notes = c(3,5,7,7,9,10,4,7,9)
+notesMean = mean(notes)
+n = length(notes)
+desv.tip = sd(notes)
+```
+This year I have done $n=$ `r n` exams, with an average of $\overline{x}=$ `r round(notesMean,2)` and an standard deviation of $s=$ `r round(desv.tip,2)` 
