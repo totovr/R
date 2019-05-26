@@ -1,0 +1,52 @@
+---
+title: Data Structure
+author: Antonio Vega
+output: 
+  ioslides_presentation:
+    widescreen: true
+    css: ../JB_style.css
+    logo: ../Imgs/LogoCurso.png
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+```
+
+# Vectors
+
+## Data types in R
+
+A ** vector ** is an ordered sequence of data. `R` has many types of data, for example:
+
+- `logical`: logical (``` TRUE``` or ```FALSE```)
+- `integer`: whole numbers, $\ mathbb Z$
+- `numeric`: real numbers, $\ mathbb R$
+- `complex`: complex numbers, $\ mathbb C$
+- `character`: words
+
+In the vectors of `R`, all their objects must be of the same type: all numbers, all words, etc. When we want to use vectors formed by objects of different types, we will have to use ** generalized lists **, `lists' that we will see at the end of the topic.
+
+## Basic
+
+- ```c ()```: to define a vector
+- ```scan ()```: to define a vector
+- ```fix (x)```: to visually modify the vector $x$
+- ```rep (a, n)```: to define a constant vector that contains the data $a$ repeated $n$ times
+
+```{r}
+c(1,2,3)
+rep("Tono",5)
+```
+
+
+## Función scan() {.example}
+
+This functions also work with URL with text files
+
+**Example**
+
+This is an example of how to create a vector that contains 3 copies of 1 9 9 8 0 7 2 6 with the scan function:
+<div class = "aligncenter">
+![](../Imgs/scan.png)
+</div>
+
