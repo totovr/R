@@ -33,7 +33,7 @@ In the vectors of `R`, all their objects must be of the same type: all numbers, 
 - ```fix (x)```: to visually modify the vector $x$
 - ```rep (a, n)```: to define a constant vector that contains the data $a$ repeated $n$ times
 
-```{r}
+```{r example_rep}
 c(1,2,3)
 rep("Tono",5)
 ```
@@ -50,3 +50,12 @@ This is an example of how to create a vector that contains 3 copies of 1 9 9 8 0
 ![](../Imgs/scan.png)
 </div>
 
+## Progressions and Sequences
+
+An arithmetic progression is a succession of numbers such that the **difference**, $d$, of any pair of successive terms in the sequence is constant.
+$$a_n = a_1 + (n-1) \ cdot d$$
+
+- ```seq (a, b, by=d)```: to generate an [arithmetic progression](https://es.wikipedia.org/wiki/ArhythmicProgression) of difference $d$ that starts in $to$ up get to $b$
+- ```seq (a, b, length.out=n)```: define arithmetic progression of length $n$ ranging from $a$ to $b$ with difference $d$. Therefore $d = (b-a) / (n-1)$
+- ```seq (a, by= d, length.out=n)```: define the arithmetic progression of length $n$ and difference $d$ starting in $a$
+- ```a:b```: define the sequence of consecutive numbers ** ($\ mathbb {Z}$) between two numbers $a$ and $b$
