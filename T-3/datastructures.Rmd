@@ -19,9 +19,9 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 A ** vector ** is an ordered sequence of data. `R` has many types of data, for example:
 
 - `logical`: logical (``` TRUE``` or ```FALSE```)
-- `integer`: whole numbers, $\ mathbb Z$
-- `numeric`: real numbers, $\ mathbb R$
-- `complex`: complex numbers, $\ mathbb C$
+- `integer`: whole numbers, $\mathbb Z$
+- `numeric`: real numbers, $\mathbb R$
+- `complex`: complex numbers, $\mathbb C$
 - `character`: words
 
 In the vectors of `R`, all their objects must be of the same type: all numbers, all words, etc. When we want to use vectors formed by objects of different types, we will have to use ** generalized lists **, `lists' that we will see at the end of the topic.
