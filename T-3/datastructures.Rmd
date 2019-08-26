@@ -1,11 +1,12 @@
 ---
-title: Data Structure
-author: Antonio Vega
+title: "Data Structure"
+author: "Antonio Vega"
 output: 
   ioslides_presentation:
     widescreen: true
     css: ../JB_style.css
     logo: ../Imgs/LogoCurso.png
+    
 ---
 
 ```{r setup, include=FALSE}
@@ -16,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 
 ## Data types in R
 
-A ** vector ** is an ordered sequence of data. `R` has many types of data, for example:
+A **vector** is an ordered sequence of data. `R` has many types of data, for example:
 
 - `logical`: logical (``` TRUE``` or ```FALSE```)
 - `integer`: whole numbers, $\mathbb Z$
@@ -24,14 +25,14 @@ A ** vector ** is an ordered sequence of data. `R` has many types of data, for e
 - `complex`: complex numbers, $\mathbb C$
 - `character`: words
 
-In the vectors of `R`, all their objects must be of the same type: all numbers, all words, etc. When we want to use vectors formed by objects of different types, we will have to use ** generalized lists **, `lists' that we will see at the end of the topic.
+In the vectors of `R`, all their objects must be of the same type: all numbers, all words, etc. When we want to use vectors formed by objects of different types, we will have to use **generalized lists**, 'lists' that we will see at the end of the topic.
 
 ## Basic
 
-- ```c ()```: to define a vector
-- ```scan ()```: to define a vector
-- ```fix (x)```: to visually modify the vector $x$
-- ```rep (a, n)```: to define a constant vector that contains the data $a$ repeated $n$ times
+- ```c()```: to define a vector
+- ```scan()```: to define a vector
+- ```fix(x)```: to visually modify the vector $x$
+- ```rep(a, n)```: to define a constant vector that contains the data $a$ repeated $n$ times
 
 ```{r example_rep}
 c(1,2,3)
@@ -63,7 +64,9 @@ $$a_n = a_1 + (n-1) \ cdot d$$
 
 ## Example of sequence  {.example}
 
-This is an example of a sequence `r seq(5, 60, by = 3.5)`, if we want a sequence of **n** lengh we can use `r seq(5, 60, length.out = 7)`, if we want to start in n number and have a determinate lenght with n step we use `r seq(5, length.out = 7, by = 3)`
+* This is an example of a sequence `r seq(5, 60, by = 3.5)`
+* If we want a sequence of **n** lengh we can use `r seq(5, 60, length.out = 7)`
+* Ifwe want to start in n number and have a determinate lenght with n step we use `r seq(5, length.out = 7, by = 3)`
 
 ## Sequences {.exercise}
 
@@ -86,6 +89,20 @@ x
 c(0, x, 10, x, 20)
 ```
 
+## Functions
 
+When we want to apply a function to each of the elements of a data vector, the `sapply` function saves us having to program with loops in `R`:
 
+- ''sapply (vector_name, FUN = function_name)'': to apply this function to all vector elements
+- ```sqrt(x)```: Calculate a new vector with the square roots of each of the elements of the vector $x$
 
+## Example os use sapply function {.example}
+
+```{r sapply_function_other_topology, echo=TRUE}
+x <- 1:10
+sapply(x, FUN = function(w){sqrt(w)})
+```
+
+```{r sapply_other_topology, echo=TRUE}
+sapply(x, function(w)sqrt(w))
+```
