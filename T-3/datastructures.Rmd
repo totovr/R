@@ -39,7 +39,7 @@ rep("Tono",5)
 ```
 
 
-## scan() function {.example}
+## scan() function 
 
 This functions also work with URL with text files
 
@@ -60,25 +60,23 @@ $$a_n = a_1 + (n-1) \ cdot d$$
 - ```seq (a, by= d, length.out=n)```: define the arithmetic progression of length $n$ and difference $d$ starting in $a$
 - ```a:b```: define the sequence of consecutive numbers ** ($\mathbb{Z}$) between two numbers $a$ and $b$
 
-## Example of sequence  {.example}
+## Example of sequence 
 
 * This is an example of a sequence `r seq(5, 60, by = 3.5)`
 * If we want a sequence of **n** lengh we can use `r seq(5, 60, length.out = 7)`
 * If we want to start in n number and have a determinate lenght with n step we use `r seq(5, length.out = 7, by = 3)`
 
-## Sequences {.exercise}
+## Sequences Exercises{.exercise}
 
-**Exercises**
-
-* Numbers sequence from 1 ot 20:  `r 1:20`
-* First 20 pair numbers: `r seq(2,by=2, length.out=20)`
-* 30 equidistant numbers bettwen 17 and 98 with 4 significative decimals: 
+- Numbers sequence from 1 ot 20:  `r 1:20`
+- First 20 pair numbers: `r seq(2,by=2, length.out=20)`
+- 30 equidistant numbers bettwen 17 and 98 with 4 significative decimals: 
 ```{r sequence_round, echo=FALSE, results='asis'} 
 seqX = seq(17,98, length.out=30)
 round(seqX , digits = 4)
 ```
 
-## Example of vector  {.example}
+## Example of vector 
 
 This is another example to generate a vector, c is also named as concatenation:
 
@@ -95,7 +93,7 @@ When we want to apply a function to each of the elements of a data vector, the `
 - ''sapply (vector_name, FUN = function_name)'': to apply this function to all vector elements
 - ```sqrt(x)```: Calculate a new vector with the square roots of each of the elements of the vector $x$
 
-## Example os use sapply function {.example}
+## Example of use sapply function 
 
 ```{r sapply_function_other_topology, echo=TRUE}
 x <- 1:10
@@ -124,7 +122,7 @@ Given a vector of data $x$ we can calculate many statistical measures about it:
   - Allows to define sequences described by summation
   - Each entry of ``cumsum(x)`` is the sum of the $x$ entries up to its position
   
-## Functions {.example}
+## Functions
 
 ```{r functions_example}
 square_fun = function(x){x^2}
@@ -144,3 +142,5 @@ v = c(1,7,5,2,4,6,3)
 sort(v)
 rev(v)
 ```
+
+## Order Exercises{.exercise}
