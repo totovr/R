@@ -66,14 +66,14 @@ $$a_n = a_1 + (n-1) \ cdot d$$
 * If we want a sequence of **n** lengh we can use `r seq(5, 60, length.out = 7)`
 * If we want to start in n number and have a determinate lenght with n step we use `r seq(5, length.out = 7, by = 3)`
 
-## Sequences Exercises{.exercise}
+## Sequences Exercises
 
 - Numbers sequence from 1 ot 20:  `r 1:20`
 - First 20 pair numbers: `r seq(2,by=2, length.out=20)`
 - 30 equidistant numbers bettwen 17 and 98 with 4 significative decimals: 
 ```{r sequence_round, echo=FALSE, results='asis'} 
 seqX = seq(17,98, length.out=30)
-round(seqX , digits = 4)
+signif(seqX , digits = 6)
 ```
 
 ## Example of vector 
@@ -143,4 +143,21 @@ sort(v)
 rev(v)
 ```
 
-## Order Exercises{.exercise}
+## Order Exercises
+
+```{r order_exercise_one, results='asis'}
+v = c(1,7,5,2,4,6,3)
+s = sort(v)
+rev(s)
+```
+
+```{r order_exercise_one_shorter, results='asis'}
+v = c(1,7,5,2,4,6,3)
+sort(v, decreasing = TRUE)
+```
+
+```{r order_exercise_two, results='asis'}
+v = c(1,7,5,2,4,6,3)
+s = rev(v)
+sort(s)
+```
