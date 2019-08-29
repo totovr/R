@@ -161,3 +161,93 @@ v = c(1,7,5,2,4,6,3)
 s = rev(v)
 sort(s)
 ```
+
+## Subvectors
+
+- ```vector[i]```: gives the $i$ -th entry of the vector
+
+  - R indexes start at 1
+  - ```vector[length(vector)]```: gives us the last entry of the vector
+  - ```vector[a:b]```: if $a$ and $b$ are two natural numbers, the subvector gives us with the entries of the original vector that go from the $to$-th position until the $b$-th.
+  - ```vector [-i]```: if $i$ is a number, this subvector is made up of all the entries of the original vector except the $i$ -th entry. If $i$ turns out to be a vector, then it is an index vector and creates a new vector with the entries of the original vector, whose indexes belong to $i$
+  - ```vector[-x]```: if $x$ is a vector (of indices), then this is the complement of vector [$x$]
+  
+## Subvectors
+
+- Also has logic operators:
+	
+	- ```==```: =
+	- ```!=```: $\neq$
+	- ```>=```: $\ge$  
+	- ```<=```: $\le$
+	- ```<```: $<$
+	- ```>```: $>$
+	- ```!```: NO logic
+	- ```&```: AND logic
+	- ```|```: OR logic
+	
+## Subvectors
+
+```{r}
+v = c(14,5,6,19,32,0,8)
+v[2]
+v[-c(3,5)]
+v[v != 19 & v>15]
+```
+
+## Subvectors
+
+```{r}
+w = seq(3, 50, by = 3.5) 
+w
+w[4:8]
+w[8:4]
+w[seq(2, length(w), by = 2)]
+```
+
+## Subvectors
+
+```{r}
+w[seq(1, length(w), by = 2)]
+w[-seq(2, length(w), by = 2)]
+w[(length(w)-2):length(w)]
+w[c(1,5,6)]
+```
+
+## Subvectors
+
+```{r}
+w[w>30]
+w[w>20 & w<40]
+w[w!=3 & w!=17]
+w[w<10|w>40]
+```
+## Subvectors
+
+```{r}
+w[w>=10]
+w[w>10]
+w[!w<10]
+w[w%%2==0]
+w[w%%2==1]
+w>30
+```
+
+## Subvectors
+
+```{r}
+w[w%%2==1]
+w>30
+```
+
+## Subvectors
+
+If we evaluate one vector in another vector, this will evaluate the position that meet the condition, also just can be possible if the two vectors has the same length 
+
+```{r, results='hold'}
+x = c(1,7,4,2,4,8,9,2,0)
+y = c(5,2,-3,-7,-1,4,-2,7,1)
+x
+y>0
+x[y>0]
+```

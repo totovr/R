@@ -1,0 +1,41 @@
+---
+title: "Exercise"
+author: "Antonio Vega"
+date: "8/29/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+  
+# Remarkable Product
+
+The next equation represent a remarkable product:
+
+$$(a+b)^2 = a^2+2ab+b^2$$
+
+# R Function
+
+```{r}
+binNewton2 = function(a,b){
+  a^2+2*a*b+b^2
+}
+
+binNewton2(1,2)
+```
+
+# Newton's binomial 
+
+$$(a+b)^n = \sum_{k=0}^n {n\choose k}\cdot a^{n-k}\cdot b^k = {n\choose 0}*a^n*b^0+...{n\choose n}*a^0*b^n$$
+> This function was applied for the first and last case
+
+# R Function
+
+```{r}
+binNewton = function(a,b,n){
+  cumsum(choose(n,(0:n))*a^{n-(0:n)}*b^(0*n))[n+1]
+}
+
+binNewton(2,1,2)
+```
