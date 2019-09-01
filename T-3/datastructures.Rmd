@@ -2,11 +2,12 @@
 title: "Data Structure"
 author: "Antonio Vega"
 output:
-  beamer_presentation: default
   ioslides_presentation:
     css: ../JB_style.css
     logo: ../Imgs/LogoCurso.png
     widescreen: yes
+  slidy_presentation: default
+  beamer_presentation: default
 ---
 
 ```{r setup, include=FALSE}
@@ -244,7 +245,7 @@ w>30
 
 ## Subvectors
 
-If we evaluate one vector in another vector, this will evaluate the position that meet the condition, also just can be possible if the two vectors has the same length 
+If we evaluate one vector in another vector, this will evaluate the **position** that meet the condition, also just can be possible if the two vectors has the same length 
 
 ```{r, results='hold'}
 x = c(1,7,4,2,4,8,9,2,0)
@@ -252,4 +253,49 @@ y = c(5,2,-3,-7,-1,4,-2,7,1)
 x
 y>0
 x[y>0]
+```
+
+## Conditional
+
+- ```which(x meets condition)```: to obtain the indexes of the $x$ vector entries that satisfy the given condition
+- ```which.min(x)```: gives us the first position in which the vector $x$ takes its minimum value
+- ```which(x==min(x))```: gives all the positions in which the vector $x$ takes its minimum values
+- ```which.max(x)```: gives us the first position in which the vector $x$ takes its maximum value
+- ```which(x ==max(x))```: gives all the positions in which the vector $x$ takes its maximum values
+
+## Conditional
+
+if we use which inside the vector this will return the values, not the positions
+
+```{r}
+x
+which(x>4)
+x[which(x>4)]
+x[x>4]
+```
+## Conditional
+
+The first one shows the positions and the second one shows the values that are in those positions
+```{r, results='hold'}
+x
+which(x<5 | x%%2==0)
+x[which(x<5 | x%%2==0)]
+```
+
+## Conditional
+
+Display the location of the minimum value that is 0, $which.min(x)$ show just the first value that is found, in this case there is just one 0 so $which(x==min(x))$ will also show the 0
+```{r, results='hold'}
+x
+which.min(x)
+which(x==min(x))
+```
+
+## Conditional
+
+Display the location of the minimum value that is 0, $which.min(x)$ show just the first value that is found, in this case there is just one 0 so $which(x==min(x))$ will also show the 0
+```{r, results='hold'}
+x = c(1, 7, 4, 2, 4, 8, 9, 2, 0, 9)
+which.max(x)
+which(x==max(x))
 ```
