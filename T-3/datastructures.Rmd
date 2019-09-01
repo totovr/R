@@ -299,3 +299,64 @@ x = c(1, 7, 4, 2, 4, 8, 9, 2, 0, 9)
 which.max(x)
 which(x==max(x))
 ```
+
+## NA Values
+
+Sometimes vectors has NA values so that we need to attack this cases in the next form:
+
+Dont taking in to account the NA values with $na.rm=true$, this is not recommended.
+```{r, results='hold'}
+x = c(1, 7, 4, 2, 4, 8, 9, 2, 0, NA, NA, NA, 9)
+sum(x, na.rm = TRUE)
+mean(x, na.rm =TRUE)
+```
+## NA Values
+
+We will use instead the function $is.na(somevector)$, this will show us the possition of the **NA values** with a TRUE statement
+
+```{r, results='hold'}
+x
+is.na(x)
+```
+
+Now we can determinate the position with:
+```{r, results='hold'}
+which(is.na(x))
+```
+## NA Values
+
+If we want to know the values (already assuming that will show NA) , this are already the values not the positions
+```{r} 
+x[which(is.na(x))]
+```
+Now lets write the mean of this vector to fill the NA, this is more recommended than delate the NA
+
+```{r} 
+y = x
+y[which(is.na(y))] = mean(y, na.rm=TRUE)
+y
+```
+## NA Values
+
+Another way to doesnt take in to account the NA values is with the function:
+
+```{r} 
+x
+x_clean = na.omit(x)
+x_clean
+```
+
+## NA Values
+
+This will generate attributes, that can be delated with:
+
+```{r} 
+x_clean
+attr(x_clean, "na.action") = NULL
+attr(x_clean, "class") = NULL
+x_clean
+```
+## Factors
+
+
+

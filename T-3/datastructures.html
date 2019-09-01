@@ -3586,7 +3586,90 @@ which.max(x)
 which(x==max(x))</pre>
 
 <pre >[1] 7
-[1]  7 10</pre></article></slide>
+[1]  7 10</pre>
+
+</article></slide><slide class=""><hgroup><h2>NA Values</h2></hgroup><article  id="na-values">
+
+<p>Sometimes vectors has NA values so that we need to attack this cases in the next form:</p>
+
+<p>Dont taking in to account the NA values with \(na.rm=true\), this is not recommended.</p>
+
+<pre class = 'prettyprint lang-r'>x = c(1, 7, 4, 2, 4, 8, 9, 2, 0, NA, NA, NA, 9)
+sum(x, na.rm = TRUE)
+mean(x, na.rm =TRUE)</pre>
+
+<pre >[1] 46
+[1] 4.6</pre>
+
+</article></slide><slide class=""><hgroup><h2>NA Values</h2></hgroup><article  id="na-values-1">
+
+<p>We will use instead the function \(is.na(somevector)\), this will show us the possition of the <strong>NA values</strong> with a TRUE statement</p>
+
+<pre class = 'prettyprint lang-r'>x
+is.na(x)</pre>
+
+<pre > [1]  1  7  4  2  4  8  9  2  0 NA NA NA  9
+ [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE
+[12]  TRUE FALSE</pre>
+
+<p>Now we can determinate the position with:</p>
+
+<pre class = 'prettyprint lang-r'>which(is.na(x))</pre>
+
+<pre >[1] 10 11 12</pre>
+
+</article></slide><slide class=""><hgroup><h2>NA Values</h2></hgroup><article  id="na-values-2">
+
+<p>If we want to know the values (already assuming that will show NA) , this are already the values not the positions</p>
+
+<pre class = 'prettyprint lang-r'>x[which(is.na(x))]</pre>
+
+<pre >[1] NA NA NA</pre>
+
+<p>Now lets write the mean of this vector to fill the NA, this is more recommended than delate the NA</p>
+
+<pre class = 'prettyprint lang-r'>y = x
+y[which(is.na(y))] = mean(y, na.rm=TRUE)
+y</pre>
+
+<pre > [1] 1.0 7.0 4.0 2.0 4.0 8.0 9.0 2.0 0.0 4.6 4.6 4.6 9.0</pre>
+
+</article></slide><slide class=""><hgroup><h2>NA Values</h2></hgroup><article  id="na-values-3">
+
+<p>Another way to doesnt take in to account the NA values is with the function:</p>
+
+<pre class = 'prettyprint lang-r'>x</pre>
+
+<pre > [1]  1  7  4  2  4  8  9  2  0 NA NA NA  9</pre>
+
+<pre class = 'prettyprint lang-r'>x_clean = na.omit(x)
+x_clean</pre>
+
+<pre > [1] 1 7 4 2 4 8 9 2 0 9
+attr(,&quot;na.action&quot;)
+[1] 10 11 12
+attr(,&quot;class&quot;)
+[1] &quot;omit&quot;</pre>
+
+</article></slide><slide class=""><hgroup><h2>NA Values</h2></hgroup><article  id="na-values-4">
+
+<p>This will generate attributes, that can be delated with:</p>
+
+<pre class = 'prettyprint lang-r'>x_clean</pre>
+
+<pre > [1] 1 7 4 2 4 8 9 2 0 9
+attr(,&quot;na.action&quot;)
+[1] 10 11 12
+attr(,&quot;class&quot;)
+[1] &quot;omit&quot;</pre>
+
+<pre class = 'prettyprint lang-r'>attr(x_clean, &quot;na.action&quot;) = NULL
+attr(x_clean, &quot;class&quot;) = NULL
+x_clean</pre>
+
+<pre > [1] 1 7 4 2 4 8 9 2 0 9</pre>
+
+</article></slide><slide class=""><hgroup><h2>Factors</h2></hgroup><article  id="factors"></article></slide>
 
 
   <slide class="backdrop"></slide>
