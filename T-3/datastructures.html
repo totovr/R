@@ -3669,7 +3669,145 @@ x_clean</pre>
 
 <pre > [1] 1 7 4 2 4 8 9 2 0 9</pre>
 
-</article></slide><slide class=""><hgroup><h2>Factors</h2></hgroup><article  id="factors"></article></slide>
+</article></slide><slide class=""><hgroup><h2>Factors</h2></hgroup><article  id="factors">
+
+<p><l class = "definition"> Factor</l>: it’s like a vector, but with a richer internal structure that allows it to be used to classify observations</p>
+
+<ul>
+<li><code>levels</code>: factor attribute. Each element of the factor is equal to one level. The levels classify the inputs of the factor. They are sorted alphabetically</li>
+<li>To define a factor, we must first define a vector and transform it by means of one of the functions <code>factor()</code> or <code>as.factor()</code>.</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>gender = c(&quot;M&quot;, &quot;F&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;, &quot;M&quot;)
+gender.fact = factor(gender)
+gender.fact</pre>
+
+<pre >[1] M F M F F F F M M
+Levels: F M</pre>
+
+</article></slide><slide class=""><hgroup><h2>Factors</h2></hgroup><article  id="factors-1">
+
+<p>Another way to express a factor</p>
+
+<pre class = 'prettyprint lang-r'>gender.fact2 = as.factor(gender)
+gender.fact2</pre>
+
+<pre >[1] M F M F F F F M M
+Levels: F M</pre>
+
+</article></slide><slide class=""><hgroup><h2>Modify a factors</h2></hgroup><article  id="modify-a-factors">
+
+<p>Is possible to add more levels</p>
+
+<pre class = 'prettyprint lang-r'>gender.fact3 = factor(gender, levels = c(&quot;M&quot;, &quot;F&quot;, &quot;B&quot;))
+gender.fact3</pre>
+
+<pre >[1] M F M F F F F M M
+Levels: M F B</pre>
+
+</article></slide><slide class=""><hgroup><h2>Modify a factors</h2></hgroup><article  id="modify-a-factors-1">
+
+<p>Is possible to add labels</p>
+
+<pre class = 'prettyprint lang-r'>gender.fact4 = factor(gender, levels = c(&quot;M&quot;, &quot;F&quot;, &quot;B&quot;), labels = c(&quot;Male&quot;, &quot;Female&quot;, &quot;Bisexual&quot;))
+gender.fact4</pre>
+
+<pre >[1] Male   Female Male   Female Female Female Female Male   Male  
+Levels: Male Female Bisexual</pre>
+
+</article></slide><slide class=""><hgroup><h2>Check levels of a factor</h2></hgroup><article  id="check-levels-of-a-factor">
+
+<p>To check the levels that hold a factor</p>
+
+<pre class = 'prettyprint lang-r'>levels(gender.fact)</pre>
+
+<pre >[1] &quot;F&quot; &quot;M&quot;</pre>
+
+<pre class = 'prettyprint lang-r'>levels(gender.fact4)</pre>
+
+<pre >[1] &quot;Male&quot;     &quot;Female&quot;   &quot;Bisexual&quot;</pre>
+
+</article></slide><slide class=""><hgroup><h2>Modify level of a factor</h2></hgroup><article  id="modify-level-of-a-factor">
+
+<p>To check the levels that hold a factor</p>
+
+<pre class = 'prettyprint lang-r'>levels(gender.fact4) = c(&quot;Male&quot;, &quot;Female&quot;, &quot;Bi&quot;)
+gender.fact4</pre>
+
+<pre >[1] Male   Female Male   Female Female Female Female Male   Male  
+Levels: Male Female Bi</pre>
+
+</article></slide><slide class=""><hgroup><h2>Example</h2></hgroup><article  id="example">
+
+<pre class = 'prettyprint lang-r'>note = c(1,2,3,4,4,3,4,3,2,1,2,3,4)
+note.fact = factor(note)
+note.fact</pre>
+
+<pre > [1] 1 2 3 4 4 3 4 3 2 1 2 3 4
+Levels: 1 2 3 4</pre>
+
+</article></slide><slide class=""><hgroup><h2>Example</h2></hgroup><article  id="example-1">
+
+<pre class = 'prettyprint lang-r'>levels(note.fact)</pre>
+
+<pre >[1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot;</pre>
+
+<pre class = 'prettyprint lang-r'>levels(note.fact) = c(&quot;fail&quot;, &quot;good&quot;, &quot;very good&quot;, &quot;excellent&quot;)
+note.fact</pre>
+
+<pre > [1] fail      good      very good excellent excellent very good excellent
+ [8] very good good      fail      good      very good excellent
+Levels: fail good very good excellent</pre>
+
+</article></slide><slide class=""><hgroup><h2>Example</h2></hgroup><article  id="example-2">
+
+<p>Is possible to group different levels</p>
+
+<pre class = 'prettyprint lang-r'>note</pre>
+
+<pre > [1] 1 2 3 4 4 3 4 3 2 1 2 3 4</pre>
+
+<pre class = 'prettyprint lang-r'>levels(note.fact) = c(&quot;fail&quot;, &quot;good&quot;, &quot;good&quot;, &quot;good&quot;)
+note.fact</pre>
+
+<pre > [1] fail good good good good good good good good fail good good good
+Levels: fail good</pre>
+
+</article></slide><slide class=""><hgroup><h2>Ordered factor</h2></hgroup><article  id="ordered-factor">
+
+<p><l class = "definition"> Ordered factor.</l> It is a factor where the levels follow an order</p>
+
+<ul>
+<li><code>ordered (vector, levels = ...)</code>: function that defines an ordered factor and has the same parameters as factor</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Ordered factor</h2></hgroup><article  id="ordered-factor-1">
+
+<pre class = 'prettyprint lang-r'>note</pre>
+
+<pre > [1] 1 2 3 4 4 3 4 3 2 1 2 3 4</pre>
+
+<pre class = 'prettyprint lang-r'>ordered(note, labels = c(&quot;fail&quot;, &quot;good&quot;, &quot;very good&quot;, &quot;excellent&quot;))</pre>
+
+<pre > [1] fail      good      very good excellent excellent very good excellent
+ [8] very good good      fail      good      very good excellent
+Levels: fail &lt; good &lt; very good &lt; excellent</pre>
+
+</article></slide><slide class=""><hgroup><h2>Ordered factor example</h2></hgroup><article  id="ordered-factor-example">
+
+<pre class = 'prettyprint lang-r'>fac = factor(c(1,1,1,2,2,3,2,4,1,3,3,4,2,3,4,4), 
+       levels = c(1,2,3,4), labels = c(&quot;Sus&quot;,&quot;Apr&quot;,&quot;Not&quot;,&quot;Exc&quot;))
+fac</pre>
+
+<pre > [1] Sus Sus Sus Apr Apr Not Apr Exc Sus Not Not Exc Apr Not Exc Exc
+Levels: Sus Apr Not Exc</pre>
+
+<pre class = 'prettyprint lang-r'>facOrd = ordered(c(1,1,1,2,2,3,2,4,1,3,3,4,2,3,4,4), 
+       levels = c(1,2,3,4), labels = c(&quot;Sus&quot;,&quot;Apr&quot;,&quot;Not&quot;,&quot;Exc&quot;))
+facOrd</pre>
+
+<pre > [1] Sus Sus Sus Apr Apr Not Apr Exc Sus Not Not Exc Apr Not Exc Exc
+Levels: Sus &lt; Apr &lt; Not &lt; Exc</pre></article></slide>
 
 
   <slide class="backdrop"></slide>

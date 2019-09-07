@@ -358,5 +358,104 @@ x_clean
 ```
 ## Factors
 
+<l class = "definition"> Factor</l>: it's like a vector, but with a richer internal structure that allows it to be used to classify observations
 
+- `levels`: factor attribute. Each element of the factor is equal to one level. The levels classify the inputs of the factor. They are sorted alphabetically
+- To define a factor, we must first define a vector and transform it by means of one of the functions `factor()` or `as.factor()`.
 
+```{r} 
+gender = c("M", "F", "M", "F", "F", "F", "F", "M", "M")
+gender.fact = factor(gender)
+gender.fact
+```
+## Factors
+
+Another way to express a factor 
+ 
+```{r} 
+gender.fact2 = as.factor(gender)
+gender.fact2
+```
+## Modify a factors
+
+Is possible to add more levels
+
+```{r} 
+gender.fact3 = factor(gender, levels = c("M", "F", "B"))
+gender.fact3
+```
+## Modify a factors
+
+Is possible to add labels
+
+```{r} 
+gender.fact4 = factor(gender, levels = c("M", "F", "B"), labels = c("Male", "Female", "Bisexual"))
+gender.fact4
+```
+
+## Check levels of a factor
+
+To check the levels that hold a factor 
+
+```{r} 
+levels(gender.fact)
+levels(gender.fact4)
+```
+## Modify level of a factor
+
+To check the levels that hold a factor 
+
+```{r} 
+levels(gender.fact4) = c("Male", "Female", "Bi")
+gender.fact4
+```
+
+## Example
+
+```{r} 
+note = c(1,2,3,4,4,3,4,3,2,1,2,3,4)
+note.fact = factor(note)
+note.fact
+```
+
+## Example
+
+```{r} 
+levels(note.fact)
+levels(note.fact) = c("fail", "good", "very good", "excellent")
+note.fact
+```
+
+## Example
+
+Is possible to group different levels 
+
+```{r} 
+note
+levels(note.fact) = c("fail", "good", "good", "good")
+note.fact
+```
+
+## Ordered factor
+
+<l class = "definition"> Ordered factor.</l> It is a factor where the levels follow an order
+
+- `ordered (vector, levels = ...)`: function that defines an ordered factor and has the same parameters as factor
+
+## Ordered factor
+
+```{r} 
+note
+ordered(note, labels = c("fail", "good", "very good", "excellent"))
+```
+
+## Ordered factor example
+
+```{r}
+fac = factor(c(1,1,1,2,2,3,2,4,1,3,3,4,2,3,4,4), 
+       levels = c(1,2,3,4), labels = c("Sus","Apr","Not","Exc"))
+fac
+facOrd = ordered(c(1,1,1,2,2,3,2,4,1,3,3,4,2,3,4,4), 
+       levels = c(1,2,3,4), labels = c("Sus","Apr","Not","Exc"))
+facOrd
+```
