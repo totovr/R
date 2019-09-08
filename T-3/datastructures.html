@@ -3807,7 +3807,71 @@ Levels: Sus Apr Not Exc</pre>
 facOrd</pre>
 
 <pre > [1] Sus Sus Sus Apr Apr Not Apr Exc Sus Not Not Exc Apr Not Exc Exc
-Levels: Sus &lt; Apr &lt; Not &lt; Exc</pre></article></slide>
+Levels: Sus &lt; Apr &lt; Not &lt; Exc</pre>
+
+</article></slide><slide class=""><hgroup><h2>Lists</h2></hgroup><article  id="lists">
+
+<p><l class = "definition"> List. </l> List consisting of different objects, not necessarily of the same type, each with an internal name</p>
+
+<ul>
+<li><code>list (...)</code>: function that creates a list
+
+<ul>
+<li>To obtain a specific component we use the <code>list $ component</code> instruction</li>
+<li>We can also indicate the object by its position using double square brackets: <code>list [[i]]</code>. What we will get is a list formed by that single component, not the object that forms the component</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Get information of one list</h2></hgroup><article  id="get-information-of-one-list">
+
+<p>If we want to access to one component of the list is necessary to use the character \(\$\)</p>
+
+<pre class = 'prettyprint lang-r'>x = c(1,-2,3,4,-5,6,7,-8,-9,0)
+L = list(name = &quot;Temperature&quot;, vector = x, mean_list = mean(x), summation = cumsum(x))
+L</pre>
+
+<pre >$name
+[1] &quot;Temperature&quot;
+
+$vector
+ [1]  1 -2  3  4 -5  6  7 -8 -9  0
+
+$mean_list
+[1] -0.3
+
+$summation
+ [1]  1 -1  2  6  1  7 14  6 -3 -3</pre>
+
+<pre class = 'prettyprint lang-r'>L$mean_list</pre>
+
+<pre >[1] -0.3</pre>
+
+</article></slide><slide class=""><hgroup><h2>Get information of one list</h2></hgroup><article  id="get-information-of-one-list-1">
+
+<p>Also with the position, it needs to have double bracket</p>
+
+<pre class = 'prettyprint lang-r'>L[[2]]</pre>
+
+<pre > [1]  1 -2  3  4 -5  6  7 -8 -9  0</pre>
+
+</article></slide><slide class=""><hgroup><h2>Get information of one list</h2></hgroup><article  id="get-information-of-one-list-2">
+
+<ul>
+<li><code>str(list)</code>: to know the intern structure of one list</li>
+<li><code>names(list)</code>: to know the names of the list</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>str(L)</pre>
+
+<pre >List of 4
+ $ name     : chr &quot;Temperature&quot;
+ $ vector   : num [1:10] 1 -2 3 4 -5 6 7 -8 -9 0
+ $ mean_list: num -0.3
+ $ summation: num [1:10] 1 -1 2 6 1 7 14 6 -3 -3</pre>
+
+<pre class = 'prettyprint lang-r'>names(L)</pre>
+
+<pre >[1] &quot;name&quot;      &quot;vector&quot;    &quot;mean_list&quot; &quot;summation&quot;</pre></article></slide>
 
 
   <slide class="backdrop"></slide>
