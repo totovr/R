@@ -92,7 +92,7 @@ c(0, x, 10, x, 20)
 
 When we want to apply a function to each of the elements of a data vector, the `sapply` function saves us having to program with loops in `R`:
 
-- ''sapply (vector_name, FUN = function_name)'': to apply this function to all vector elements
+- ```sapply(vector_name, FUN = function_name)```: to apply this function to all vector elements
 - ```sqrt(x)```: Calculate a new vector with the square roots of each of the elements of the vector $x$
 
 ## Example of use sapply function 
@@ -493,4 +493,189 @@ L[[2]]
 str(L)
 names(L)
 ```
+# Matrix
 
+## How to define them
+
+- `matrix (vector, nrow = n, byrow = logical_value)`: to define a matrix of $ n $ rows formed by the entries of the vector
+  - `nrow`: number of rows
+  - `byrow`: if it is equal to TRUE, the matrix is constructed by rows; if it is equal to FALSE (default value), it is constructed by columns.
+  -` ncol`: number of columns (can be used instead of nrow)
+  - R shows the matrices indicating as [$ i, $] the $ i $ -th row and [$, j $] the $ j $ -th column
+- All entries in an array must be of the same type of data
+
+## Matrix example
+
+```{r}
+M = matrix(1:12, nrow= 4)
+M
+M = matrix(1:12, nrow= 4, byrow = TRUE)
+M
+```
+## Matrix example
+
+```{r}
+M = matrix(1:12, nrow= 3)
+M
+```
+
+## Matrix example
+
+If we write a number of rows that is not mulptiple of the data lenght it will filled with the begging numbers 
+
+```{r}
+M = matrix(1:12, nrow= 5)
+M
+```
+## Matrix example
+
+If we just have one data
+
+```{r}
+M = matrix(1, nrow= 4, ncol = 6)
+M
+```
+## Matrix exercise
+
+- How would you define a constant matrix? That is, how would you define a $A$ matrix such that $\forall\  i=1,...,n; j = 1,...,m$, $a_{i,j}=k$  where $k\in\mathbb{R}$? Since R does not admit unknowns, test for the specific case $n = 3, m = 5, k = 0$
+
+```{r}
+matrix(0, nrow = 3, ncol = 5)
+```
+## Matrix exercise
+
+- With the vector vec = (1,2,3,4,5,6,7,8,9,10,11,12) create a matrix
+
+```{r}
+vec <- c(1,2,3,4,5,6,7,8,9,10,11,12)
+m_example <- matrix(vec, nrow = 3)
+m_example
+```
+## How to build a matrix with other functions
+
+- `rbind (vector1, vector2, ...)`: construct the array of rows vector1, vector2, ...
+- `cbind (vector1, vector2, ...)`: construct the column matrix vector1, vector2, ...
+  - Vectors must have the same length
+  - It also serves to add columns (rows) to an array or concatenate columns (rows) matrices with the same number of rows (columns)
+- `diag (vector)`: to construct a diagonal matrix with a given vector
+  - If we apply diag to a $n$ number, it produces an identity matrix of order $n$
+  
+## How to build a matrix with other functions
+
+Here we added the rows or we can also generate another matrix
+
+```{r}
+M = matrix(1:12, nrow= 3)
+rbind(M, c(1,2,3,4), c(5,6,7,8))
+rbind(c(1,2,3,4), c(5,6,7,8))
+```
+## How to build a matrix with other functions
+
+Here we added the vectors in columns
+
+```{r}
+cbind(c(1,2,3,4), c(5,6,7,8))
+```
+
+## How to build a matrix with other functions
+
+Now we will generate a identity matrix with the *diag* function
+
+```{r}
+diag(5, nrow=3)
+```
+
+## Submatrix
+
+- `matrix [i,j]`: indicates the entry ($i,j$) of the matrix, being $i,j\in\mathbb{N}$. If $i$ and $j$ are index vectors, we will be defining the submatrix with the rows belonging to the vector $i$ and columns belonging to the vector $j$
+- `matrix [i,]`: indicates the $ i $ -th row of the matrix, being $i\in\mathbb{N}$
+- `matrix [, j]`: indicates the $ j $ -th column of the being $j\in\mathbb{N}$
+  - If $i$ ($j$) is an index vector, we will be defining the submatrix with the rows (columns) belonging to the vector $i$ ($j$)
+
+## Submatrix
+
+```{r}
+M
+M[2,3]
+M[2,]
+```
+
+## Submatrix
+
+```{r}
+M
+M[c(2,3), 1:2]
+```
+
+## Functions
+
+- `diag(matrix)`: to obtain the diagonal of the matrix
+- `nrow(matrix)`: returns the number of rows in the matrix
+- `ncol(matrix)`: returns the number of columns in the matrix
+- `dim(matrix)`: returns the dimensions of the matrix
+- `sum(matrix)`: we get the sum of all the entries in the matrix
+- `prod(matrix)`: we get the product of all the entries in the matrix
+- `mean(matrix)`: we get the arithmetic mean of all the entries in the matrix
+
+## Functions example
+
+```{r}
+M
+diag(M)
+nrow(M)
+ncol(M)
+```
+## Functions
+
+- `colSums(matrix)`: we obtain the sums by columns of the matrix
+- `rowSums(matrix)`: we obtain the sums by rows of the matrix
+- `colMeans(matrix)`: we obtain the arithmetic means by columns of the matrix
+- `rowMeans(matrix)`: we obtain the arithmetic means by rows of the matrix
+
+## Functions example
+
+```{r}
+M
+colSums(M)
+rowSums(M)
+colMeans(M)
+```
+## Functions example
+
+Given the matrix $$A = \begin{pmatrix}
+1 & 4 & 7\\
+2 & 5 & 8\\
+3 & 6 & 9
+\end{pmatrix}$$
+</div>
+
+```{r}
+A = matrix(c(1,2,3,4,5,6,7,8,9), ncol = 3)
+dim(A)
+diag(A)
+```
+
+## Función apply()
+
+- `apply (matrix, MARGIN = ..., FUN = function)`: to apply other functions to the rows or columns of an array
+  - `MARGIN`: must be 1 if we want to apply the function by rows; 2 if we want to apply it by columns; or c (1,2) if we want to apply it to each entry
+
+```{r}
+A
+sqrt_sum_function = function(argA){
+  sqrt(sum(argA^2))
+}
+apply(A, MARGIN = 1, FUN = sqrt_sum_function)
+apply(A, MARGIN = c(1,2), FUN = function(argA){argA^2})
+```
+## Note
+
+**sapply** casts the data frame to a list before operating on it, **apply** casts the data frame to a matrix. Since matrices cannot have mixed types and there is at least one column with non-numeric data, then everything becomes character data.
+
+## Función apply()
+
+```{r}
+apply(A, MARGIN = c(1,2), FUN = cuadrado)
+apply(A, MARGIN = 1, FUN = sum)
+apply(A, MARGIN = 2, FUN = sum)
+```
