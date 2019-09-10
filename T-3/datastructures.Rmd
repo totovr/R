@@ -479,7 +479,7 @@ L$mean_list
 ```
 ## Get information of one list
 
-Also with the position, it needs to have double bracket 
+Also with the position, it needs to have double bracket, we will get the vector in this case
 ```{r}
 L[[2]]
 ```
@@ -490,7 +490,7 @@ L[[2]]
 - `names(list)`: to know the names of the list
 
 ```{r}
-str(L)
+str(L) # get the structure of the list 
 names(L)
 ```
 # Matrix
@@ -598,6 +598,7 @@ diag(5, nrow=3)
 M
 M[2,3]
 M[2,]
+M[,2]
 ```
 
 ## Submatrix
@@ -660,22 +661,95 @@ diag(A)
 - `apply (matrix, MARGIN = ..., FUN = function)`: to apply other functions to the rows or columns of an array
   - `MARGIN`: must be 1 if we want to apply the function by rows; 2 if we want to apply it by columns; or c (1,2) if we want to apply it to each entry
 
-```{r}
+```{r, echo=FALSE}
 A
 sqrt_sum_function = function(argA){
   sqrt(sum(argA^2))
 }
+```
+```{r}
 apply(A, MARGIN = 1, FUN = sqrt_sum_function)
 apply(A, MARGIN = c(1,2), FUN = function(argA){argA^2})
 ```
 ## Note
 
-**sapply** casts the data frame to a list before operating on it, **apply** casts the data frame to a matrix. Since matrices cannot have mixed types and there is at least one column with non-numeric data, then everything becomes character data.
+**sapply** casts the data frame, to a list or vector before operating on it, **apply** casts the data frame to a matrix. Since matrices cannot have mixed types and there is at least one column with non-numeric data, then everything becomes character data.
 
 ## Función apply()
 
 ```{r}
+cuadrado = function(x){x^2}
+A
 apply(A, MARGIN = c(1,2), FUN = cuadrado)
 apply(A, MARGIN = 1, FUN = sum)
 apply(A, MARGIN = 2, FUN = sum)
+```
+## Función apply()
+
+```{r}
+A
+apply(A, MARGIN = 1, FUN = sum)
+apply(A, MARGIN = 2, FUN = sum)
+```
+
+## Operations
+
+- `t(matrix)`: to obtain the matrix transpose
+- `+`: to add matrices
+- `*`: for the product of a scalar by a matrix
+- `% *%`: to multiply matrices
+- `mtx.exp(matrix,n)`: to raise the matrix to $n$
+  - From the `Biodem` package
+- Does not calculate the exact powers, approximates them
+- `%%`: to raise matrices
+  - From the `expm` package
+- Does not calculate the exact powers, approximates them
+
+## Transpose of a matrix
+
+```{r}
+M
+t(M)
+```
+
+## Multiply two matrix
+
+We will multiply $W * W$, note this is not the same as $W^2$
+```{r, echo=FALSE, results="hide"}
+W = M[1:3, 1:3] # This is to obtain a 3*3 matrix
+```
+
+```{r}
+W
+W%*%W
+```
+
+## Operations exercise 
+
+If $A = \begin{pmatrix}
+2 & 0 & 2\\
+1 & 2 & 3\\
+0 & 1 & 3
+\end{pmatrix}$ and $B = \begin{pmatrix}
+3 & 2 & 1\\
+1 & 0 & 0\\
+1 & 1 & 1
+\end{pmatrix}$, do the next operations $A*B$, $A^2$ and $B^3$
+
+## Operations exercise 
+
+A*B
+
+```{r}
+eA = rbind(c(2,0,2), c(1,2,3), c(0,1,3))
+eB = rbind(c(3,2,1), c(1,0,0), c(1,1,1))
+eA%*%eB
+```
+## Operations exercise 
+
+$A^2$ and $B^3$
+
+```{r}
+eA^2
+eB^3
 ```
